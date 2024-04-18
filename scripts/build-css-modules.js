@@ -10,22 +10,16 @@ const matchesP3MediaRule = "@media (color-gamut: p3)";
 Object.keys(allColorScales)
   .filter((key) => !key.includes("P3"))
   .forEach((key) => {
-    let selector = ":root, .light, .light-theme";
+    let selector = ":root";
 
-    if (key === "blackA" || key === "whiteA") {
-      selector = ":root";
-    }
-
-    if (key.includes("Dark")) {
-      selector = ".dark, .dark-theme";
-    }
+    let isDark = key.includes("Dark");
 
     const srgbValues = Object.entries(allColorScales).find(
       ([name]) => name === key
     )[1];
 
     const srgbCssProperties = Object.entries(srgbValues)
-      .map(([name, value]) => [toCssCasing(name), value])
+      .map(([name, value]) => [toCssCasing(name, isDark), value])
       .map(([name, value]) => `  --${name}: ${value};`)
       .join("\n");
 
@@ -36,7 +30,7 @@ Object.keys(allColorScales)
     )[1];
 
     const p3CssProperties = Object.entries(p3Values)
-      .map(([name, value]) => [toCssCasing(name), value])
+      .map(([name, value]) => [toCssCasing(name, isDark), value])
       .map(([name, value]) => `      --${name}: ${value};`)
       .join("\n");
 
@@ -50,11 +44,16 @@ Object.keys(allColorScales)
     );
   });
 
-function toCssCasing(str) {
-  return str
+function toCssCasing(str, isDark) {
+  str = str
     .replace(/([a-z])(\d)/, "$1-$2")
     .replace(/([A-Z])/g, "-$1")
-    .toLowerCase();
+
+  if (isDark) {
+    str = str.replace(/([a-z])\-([A-Z]?\d)/, "$1-dark-$2")
+  }
+
+  return str.toLowerCase();
 }
 
 function toFileName(str) {
