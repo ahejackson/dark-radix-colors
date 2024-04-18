@@ -1,5 +1,5 @@
 {
-  "name": "@radix-ui/colors",
+  "name": "dark-radix-colors",
   "version": "3.0.0",
   "contributors": [
     "Colm Tuite <colm@workos.com>",
@@ -9,10 +9,10 @@
   "module": "index.mjs",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "yarn clean && yarn && rollup -c && yarn build-css-modules",
+    "build": "pnpm clean && pnpm install && rollup -c && pnpm build-css-modules",
     "build-css-modules": "node ./scripts/build-css-modules.js",
-    "prepublishOnly": "yarn build",
-    "postpublish": "yarn clean",
+    "prepublishOnly": "pnpm build",
+    "postpublish": "pnpm clean",
     "clean": "git clean -fdX"
   },
   "keywords": [
