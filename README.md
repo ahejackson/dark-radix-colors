@@ -1,6 +1,6 @@
 # Dark Radix Colors
 
-This is an unofficial fork of the excellent Radix Color system that lets you use dark and light mode colors at the same time.
+An unofficial fork of the Radix Color system that lets you use dark and light mode colors at the same time.
 
 - [Radix Colors homepage](https://radix-ui.com/colors) - **a gorgeous, accessible color system.**
 - [The Official Repo](https://github.com/radix-ui/colors)

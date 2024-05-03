@@ -1,6 +1,7 @@
 {
   "name": "dark-radix-colors",
-  "version": "3.0.0",
+  "description": "An unofficial fork of the Radix Color system that lets you use dark and light mode colors at the same time.",
+  "version": "3.0.1",
   "contributors": [
     "Colm Tuite <colm@workos.com>",
     "Vlad Moroz <vlad@workos.com>"
